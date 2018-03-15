@@ -11,6 +11,10 @@ class NegociacaoController{
     adiciona(event){
         event.preventDefault();
         
+        const d2 = new Date(this._inputData.value.split('-'));
+        console.log(d2);
+        
+
         let negociacao = new Negociacao(
             this._inputData.value,
             this._inputQuantidade.value,
@@ -18,8 +22,9 @@ class NegociacaoController{
         );
 
         
+        
+        
         console.log(typeof(this._inputData.value));
-        console.log(negociacao);
         
     }
     
@@ -28,6 +33,11 @@ class NegociacaoController{
         $('#data').value = '2015-01-01';
         $('#quantidade').value = '10';
         $('#valor').value = '2';
+        
+        let d1 = new Date([2011, 10, 20]);
+        console.log(d1);
+        let d3 = new Date('2011,10,25');
+        console.log(d3);
         
     }
 }
