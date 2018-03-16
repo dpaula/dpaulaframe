@@ -11,11 +11,10 @@ class NegociacaoController{
     adiciona(event){
         event.preventDefault();
         
-        const dtHelper = new DataHelper();
-        let data = dtHelper.textoParaData(this._inputData.value);
+        let data = DataHelper.textoParaData(this._inputData.value);
 
         console.log('texto para data: '+data);
-        console.log('data para texto: '+dtHelper.dataParaTexto(data));
+        console.log('data para texto: '+DataHelper.dataParaTexto(data));
         
 
         let negociacao = new Negociacao(
