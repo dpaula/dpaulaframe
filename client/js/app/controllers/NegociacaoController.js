@@ -14,6 +14,19 @@ class NegociacaoController{
         const d2 = new Date(this._inputData.value.split('-'));
         console.log(d2);
         
+        let data = new Date(
+            ...this._inputData.value
+            .split('-')
+            .map(function (item, indice) {
+                if(indice == 1){
+                    return item -1;
+                }
+                return item;
+            })
+        );
+
+        console.log(data);
+        
 
         let negociacao = new Negociacao(
             this._inputData.value,
