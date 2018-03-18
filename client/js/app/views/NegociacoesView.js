@@ -1,17 +1,17 @@
-class NegociacoesView{
+class NegociacoesView {
 
-    constructor(elemento){
+    constructor(elemento) {
 
         this._elemento = elemento;
     }
 
-    update(model){
+    update(model) {
         //recebe um texto e transforma em documento html
         debugger
         this._elemento.innerHTML = this._template(model);
     }
 
-    _template(model){
+    _template(model) {
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -25,7 +25,7 @@ class NegociacoesView{
 
             <tbody>
                 ${model.negociacoes.map(n => {
-                    return `
+                return `
                         <tr>
                             <td>${DataHelper.dataParaTexto(n.data)}</td>
                             <td>${n.quantidade}</td>
@@ -33,9 +33,14 @@ class NegociacoesView{
                             <td>${n.volume}</td>
                         </tr>
                     `
-                }).join('')}
+            }).join('')}
             </tbody>
-
+                <td colspan="3"></td>
+                <td>${(function () {
+                let total = 0;
+                model.negociacoes.forEach(n => total += n.volume);
+                return total;
+            })()}</td>
             <tfoot>
             </tfoot>
         </table>
