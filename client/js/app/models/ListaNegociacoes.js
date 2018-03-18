@@ -10,7 +10,7 @@ class ListaNegociacoes{
 
     get negociacoes(){
         //retornando uma nova referencia de negociações
-        //programação defenciva para proteger as negociações
+        //programação defenciva para proteger as negociações    
         return [].concat(this._negociacoes);
     }
 

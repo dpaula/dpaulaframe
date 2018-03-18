@@ -10,11 +10,11 @@ class DataHelper {
 
     static textoParaData(texto) {
 
-
+        //O ˆ indica "começando com " e o $ "terminando com".
         //\d{4} - busca numerod(d) com 4 digitos
         //\d{4} - busca numerod(d) com 2 digitos
 
-        const expressao = /\d{4}-\d{2}-\d{2}/;
+        const expressao = /^\d{4}-\d{2}-\d{2}$/;
 
         if(!expressao.test(texto)){
             throw new Error('Deve estar no formato yyyy-MM-dd');
