@@ -1,6 +1,7 @@
 class Mensagem{
     
-    constructor(texto='hotDog'){
+    //incluindo valor default no construtor
+    constructor(texto=''){
         this._texto = texto;
     }
 
