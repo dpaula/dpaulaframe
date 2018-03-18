@@ -5,12 +5,13 @@ class NegociacoesView{
         this._elemento = elemento;
     }
 
-    update(){
+    update(model){
         //recebe um texto e transforma em documento html
-        this._elemento.innerHTML = this._template();
+        debugger
+        this._elemento.innerHTML = this._template(model);
     }
 
-    _template(){
+    _template(model){
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -23,6 +24,16 @@ class NegociacoesView{
             </thead>
 
             <tbody>
+                ${model.negociacoes.map(n => {
+                    return `
+                        <tr>
+                            <td>${DataHelper.dataParaTexto(n.data)}</td>
+                            <td>${n.quantidade}</td>
+                            <td>${n.valor}</td>
+                            <td>${n.volume}</td>
+                        </tr>
+                    `
+                }).join('')}
             </tbody>
 
             <tfoot>
