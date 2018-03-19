@@ -1,14 +1,7 @@
-class NegociacoesView {
+class NegociacoesView extends View{
 
     constructor(elemento) {
-
-        this._elemento = elemento;
-    }
-
-    update(model) {
-        //recebe um texto e transforma em documento html
-        debugger
-        this._elemento.innerHTML = this._template(model);
+        super(elemento);
     }
 
     _template(model) {
