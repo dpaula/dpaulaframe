@@ -5,6 +5,10 @@ class NegociacoesView extends View{
     }
 
     template(model) {
+        if(!model){
+            return;
+        }
+
         return `
         <table class="table table-hover table-bordered">
             <thead>
