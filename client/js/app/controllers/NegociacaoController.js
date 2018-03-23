@@ -55,18 +55,37 @@ class NegociacaoController {
         let negService = new NegociacaoService();
 
         negService.obterNegociacoesDaSemana((erro, negociacoes) => {
-
             if(erro){
                 this._mensagem.texto = erro;
                 return;
             }
-
             negociacoes.forEach(negociacao => {
                 this._listaNegociacoes.adiciona(negociacao);
             });
-            this._mensagem.texto = 'Negociações importadas com sucesso!!';
-
+            negService.obterNegociacoesDaSemanaAnterior((erro, negociacoes) => {
+                if(erro){
+                    this._mensagem.texto = erro;
+                    return;
+                }
+                negociacoes.forEach(negociacao => {
+                    this._listaNegociacoes.adiciona(negociacao);
+                });
+                negService.obterNegociacoesDaSemanaRetrasada((erro, negociacoes) => {
+                    if(erro){
+                        this._mensagem.texto = erro;
+                        return;
+                    }
+                    negociacoes.forEach(negociacao => {
+                        this._listaNegociacoes.adiciona(negociacao);
+                    });
+                    this._mensagem.texto = 'Negociações importadas com sucesso!!';
+                });
+            });
         });
+        
+        
+
+
     }
 
     carregaIniciais() {
